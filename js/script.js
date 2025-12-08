@@ -7,6 +7,47 @@
 */
 
 // ==========================================
+// MOBILE MENU
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMobileMenu = document.getElementById('close-mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    // Open mobile menu
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.remove('-translate-x-full');
+            mobileMenuOverlay.classList.remove('opacity-0', 'invisible');
+            document.body.style.overflow = 'hidden'; // Prevent scroll
+        });
+    }
+
+    // Close mobile menu
+    function closeMobileMenuHandler() {
+        mobileMenu.classList.add('-translate-x-full');
+        mobileMenuOverlay.classList.add('opacity-0', 'invisible');
+        document.body.style.overflow = ''; // Restore scroll
+    }
+
+    if (closeMobileMenu) {
+        closeMobileMenu.addEventListener('click', closeMobileMenuHandler);
+    }
+
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', closeMobileMenuHandler);
+    }
+
+    // Close menu when clicking on anchor links
+    const mobileMenuLinks = mobileMenu?.querySelectorAll('a[href^="#"]');
+    mobileMenuLinks?.forEach(link => {
+        link.addEventListener('click', closeMobileMenuHandler);
+    });
+});
+
+// ==========================================
 // UTILITY FUNCTIONS
 // ==========================================
 
@@ -1120,6 +1161,50 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.addEventListener('scroll', debounce(animateOnScroll, 50));
+
+// ==========================================
+// FAQ ACCORDION FUNCTIONALITY
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            const icon = this.querySelector('i');
+            
+            // Toggle answer visibility
+            answer.classList.toggle('hidden');
+            
+            // Rotate icon
+            if (icon) {
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            }
+        });
+    });
+});
+
+// ==========================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ==========================================
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href.length > 1) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    });
+});
 
 // ==========================================
 // END OF SCRIPT

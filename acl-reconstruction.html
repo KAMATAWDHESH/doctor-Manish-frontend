@@ -17,250 +17,484 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <!-- Progress Bar -->
-    <div id="progress-bar" class="progress-bar"></div>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#00447c',
+                        'secondary-orange': '#f97425',
+                        'light-bg': '#f6f3ee',
+                        'dark-text': '#032e42',
+                        'gray-text': '#676767',
+                        'dark-gray': '#252628',
+                    },
+                    fontFamily: {
+                        'primary': ['Poppins', 'sans-serif'],
+                        'secondary': ['Roboto', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-content">
-                <div class="contact-info">
-                    <a href="tel:+919386737895"><i class="fas fa-phone-alt"></i> +91 9386737895</a>
-                    <a href="mailto:info@drmanishranjan.com"><i class="fas fa-envelope"></i> info@drmanishranjan.com</a>
-                </div>
-                <div class="top-bar-right">
-                    <span><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 6:00 PM</span>
-                </div>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Custom JavaScript -->
+    <script src="js/script.js" defer></script>
+
+</head>
+<body class="font-primary text-dark-text overflow-x-hidden">
+    <!-- Progress Bar -->
+    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-primary-blue to-secondary-orange z-[99999] transition-all duration-100"></div>
+
+    <!-- Top Contact Bar -->
+    <div class="bg-dark-gray text-white py-2 sm:py-3">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-2 text-xs sm:text-sm">
+                <a href="tel:+91-7991153348" class="hover:text-secondary-orange transition flex items-center"><i class="fas fa-phone-alt mr-2"></i> +91-7991153348</a>
+                <a href="mailto:info@drmanishranjan.com" class="hover:text-secondary-orange transition flex items-center"><i class="fas fa-envelope mr-2"></i> info@drmanishranjan.com</a>
+                <span class="hidden md:flex items-center"><i class="fas fa-clock mr-2"></i> Mon-Sat: 9:00 AM - 6:00 PM</span>
             </div>
         </div>
     </div>
 
     <!-- Main Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
+    <header class="bg-white shadow-md relative z-[1000]">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col lg:flex-row justify-between items-center py-4 lg:py-6 gap-4">
+                <!-- Logo -->
+                <div class="w-full lg:w-auto flex justify-center lg:justify-start">
                     <a href="index.html">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60'%3E%3Crect fill='%2300447c' width='200' height='60' rx='5'/%3E%3Ctext x='100' y='40' font-family='Arial' font-size='24' font-weight='bold' fill='white' text-anchor='middle'%3EDr. Ortho%3C/text%3E%3C/svg%3E" alt="Dr. Manish Ranjan - Orthopedic Surgeon">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='50'%3E%3Crect fill='%2300447c' width='160' height='50' rx='5'/%3E%3Ctext x='80' y='32' font-family='Arial' font-size='20' font-weight='bold' fill='white' text-anchor='middle'%3EDr. Ortho%3C/text%3E%3C/svg%3E" alt="Dr. Manish Ranjan" class="h-12 sm:h-14">
                     </a>
                 </div>
 
-                <div class="header-contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
+                <!-- Contact Info Cards (Hidden on mobile, shown on desktop) -->
+                <div class="hidden lg:flex gap-6">
+                    <!-- Call Us Now -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-primary-blue text-white flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-phone-alt text-lg"></i>
                         </div>
-                        <div class="contact-details">
-                            <span class="contact-label">Call Us Now</span>
-                            <a href="tel:+919386737895" class="contact-value">+91 9386737895</a>
+                        <div>
+                            <p class="text-xs text-gray-text">Call Us Now</p>
+                            <a href="tel:+91-7991153348" class="text-base font-semibold text-dark-text hover:text-primary-blue transition">+91-7991153348</a>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+
+                    <!-- Email -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-primary-blue text-white flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope text-lg"></i>
                         </div>
-                        <div class="contact-details">
-                            <a href="mailto:info@drmanishranjan.com" class="contact-value">info@drmanishranjan.com</a>
-                            <span class="contact-subtitle">Drop Us a Line</span>
+                        <div>
+                            <a href="mailto:info@drmanishranjan.com" class="text-base font-semibold text-dark-text hover:text-primary-blue transition block">info@drmanishranjan.com</a>
+                            <p class="text-xs text-gray-text">Drop Us a Line</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="header-social">
-                    <a href="http://facebook.com/drmanishranjan" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/drmanishranjan/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/channel/UCczjpMVkbH4vmCTLSMMVTFA" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <!-- Social Icons (Hidden on mobile, shown on desktop) -->
+                <div class="hidden lg:flex gap-2">
+                    <a href="https://www.facebook.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary-blue text-gray-600 hover:text-white flex items-center justify-center transition" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary-blue text-gray-600 hover:text-white flex items-center justify-center transition" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary-blue text-gray-600 hover:text-white flex items-center justify-center transition" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
-
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Menu -->
-    <nav class="main-nav" id="main-nav">
-        <div class="container">
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item"><a href="index.html">Home</a></li>
-                <li class="nav-item"><a href="index.html#about">About Doctor</a></li>
-                <li class="nav-item has-dropdown active">
-                    <a href="index.html#services">Our Services <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-menu mega-menu">
-                        <div class="mega-menu-columns">
-                            <div class="mega-column">
-                                <h4>Orthopedic Surgeries</h4>
-                                <ul>
-                                    <li><a href="knee-replacement.html">Knee Replacement</a></li>
-                                    <li><a href="hip-replacement.html">Hip Replacement</a></li>
-                                    <li><a href="acl-reconstruction.html">ACL Reconstruction</a></li>
-                                    <li><a href="arthroscopy-surgery.html">Arthroscopy Surgery</a></li>
-                                    <li><a href="trauma-surgery.html">Trauma Surgery</a></li>
-                                    <li><a href="sports-injury-treatment.html">Sports Injury Treatment</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-column">
-                                <h4>Orthopedic Treatments</h4>
-                                <ul>
-                                    <li><a href="neck-pain-treatment.html">Neck Pain Treatment</a></li>
-                                    <li><a href="back-pain-treatment.html">Back Pain Treatment</a></li>
-                                    <li><a href="hip-preservation.html">Hip Preservation</a></li>
-                                    <li><a href="arthritis-treatment.html">Arthritis Treatment</a></li>
-                                    <li><a href="plaster-casts.html">Plaster Casts</a></li>
-                                    <li><a href="prp-treatment.html">PRP Treatment</a></li>
-                                    <li><a href="blood-test.html">Blood Test</a></li>
-                                    <li><a href="xray-services.html">X-ray Services</a></li>
-                                </ul>
+    <!-- Navigation Bar -->
+    <nav class="bg-primary-blue sticky top-0 z-[999] shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center items-center">
+                <button class="md:hidden text-white p-4" id="mobile-menu-btn" aria-label="Toggle Menu"><i class="fas fa-bars text-xl"></i></button>
+                <ul class="hidden md:flex flex-wrap items-center justify-center gap-1 lg:gap-2 py-4" id="nav-menu">
+                    <a href="index.html" class="text-white hover:text-secondary-orange transition-all duration-300 font-medium px-3 py-2">Home</a>
+                    <a href="index.html#about" class="text-white hover:text-secondary-orange transition-all duration-300 font-medium px-3 py-2">About Doctor</a>
+                    <div class="relative group">
+                        <button class="text-white hover:text-secondary-orange transition-all duration-300 font-medium px-3 py-2">Our Services <i class="fas fa-chevron-down text-xs ml-1 transition-transform duration-300 group-hover:rotate-180"></i></button>
+                        <div class="absolute opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 -translate-y-2 bg-white text-dark-text shadow-2xl rounded-lg mt-2 w-full sm:w-[500px] lg:w-[600px] z-50">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+                                <div>
+                                    <h4 class="text-primary-blue font-bold text-base px-4 py-2 mb-2 border-b border-gray-200">Orthopedic Surgeries</h4>
+                                    <a href="knee-replacement.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Knee Replacement</a>
+                                    <a href="hip-replacement.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Hip Replacement</a>
+                                    <a href="hip-preservation.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Hip Preservation</a>
+                                    <a href="acl-reconstruction.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">ACL Reconstruction</a>
+                                    <a href="arthroscopy-surgery.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Arthroscopy Surgery</a>
+                                    <a href="trauma-surgery.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Trauma Surgery</a>
+                                    <a href="sports-injury-treatment.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Sports Injury Treatment</a>
+                                </div>
+                                <div>
+                                    <h4 class="text-primary-blue font-bold text-base px-4 py-2 mb-2 border-b border-gray-200">Treatments & Services</h4>
+                                    <a href="arthritis-treatment.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Arthritis Treatment</a>
+                                    <a href="back-pain-treatment.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Back Pain Treatment</a>
+                                    <a href="neck-pain-treatment.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Neck Pain Treatment</a>
+                                    <a href="prp-treatment.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">PRP Treatment</a>
+                                    <a href="plaster-casts.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Plaster Casts</a>
+                                    <a href="blood-test.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Blood Test</a>
+                                    <a href="xray-services.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">X-ray Services</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="nav-item"><a href="index.html#gallery">Gallery</a></li>
-                <li class="nav-item"><a href="index.html#testimonials">Testimonials</a></li>
-                <li class="nav-item"><a href="index.html#contact">Contact Us</a></li>
-                <li class="nav-item cta"><a href="#appointment" class="btn-appointment">Book an Appointment</a></li>
-            </ul>
+                    <a href="index.html#gallery" class="text-white hover:text-secondary-orange transition-all duration-300 font-medium px-3 py-2">Gallery</a>
+                    <a href="index.html#testimonials" class="text-white hover:text-secondary-orange transition-all duration-300 font-medium px-3 py-2">Testimonials</a>
+                    <a href="index.html#faq" class="text-white hover:text-secondary-orange transition-all duration-300 font-medium px-3 py-2">FAQ</a>
+                    <a href="appointment.html" class="bg-secondary-orange text-white hover:bg-orange-600 px-6 py-2 rounded-lg transition-all duration-300 font-medium hover:shadow-lg hover:-translate-y-0.5">Book an Appointment</a>
+                </ul>
+            </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-y-0 left-0 w-80 bg-white text-dark-text transform -translate-x-full transition-transform duration-300 z-[60] overflow-y-auto shadow-2xl">
+        <div class="bg-primary-blue text-white p-4 flex justify-between items-center">
+            <h3 class="text-lg font-bold">Menu</h3>
+            <button id="close-mobile-menu" class="text-white text-2xl hover:text-secondary-orange transition-colors w-8 h-8 flex items-center justify-center">&times;</button>
+        </div>
+        
+        <nav class="p-4">
+            <a href="index.html" class="flex items-center py-3 px-4 text-dark-text hover:bg-primary-blue hover:text-white rounded-lg transition-all mb-1">
+                <i class="fas fa-home w-6 text-primary-blue mr-3"></i>
+                <span class="font-medium">Home</span>
+            </a>
+            
+            <a href="#about" class="flex items-center py-3 px-4 text-dark-text hover:bg-primary-blue hover:text-white rounded-lg transition-all mb-1">
+                <i class="fas fa-user-md w-6 text-primary-blue mr-3"></i>
+                <span class="font-medium">About Doctor</span>
+            </a>
+            
+            <!-- Services Dropdown -->
+            <details class="mb-1">
+                <summary class="flex items-center justify-between py-3 px-4 text-dark-text hover:bg-gray-100 rounded-lg transition-all cursor-pointer">
+                    <div class="flex items-center">
+                        <i class="fas fa-stethoscope w-6 text-primary-blue mr-3"></i>
+                        <span class="font-medium">Our Services</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </summary>
+                <div class="pl-6 mt-2 space-y-1">
+                    <a href="knee-replacement.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">Knee Replacement</a>
+                    <a href="hip-replacement.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">Hip Replacement</a>
+                    <a href="hip-preservation.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">Hip Preservation</a>
+                    <a href="acl-reconstruction.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">ACL Reconstruction</a>
+                    <a href="arthroscopy-surgery.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">Arthroscopy Surgery</a>
+                    <a href="trauma-surgery.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">Trauma Surgery</a>
+                    <a href="sports-injury-treatment.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">Sports Injury</a>
+                    <a href="arthritis-treatment.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">Arthritis Treatment</a>
+                    <a href="back-pain-treatment.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">Back Pain</a>
+                    <a href="neck-pain-treatment.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">Neck Pain</a>
+                    <a href="prp-treatment.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">PRP Treatment</a>
+                    <a href="plaster-casts.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">Plaster Casts</a>
+                    <a href="blood-test.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">Blood Test</a>
+                    <a href="xray-services.html" class="block py-2 px-4 text-sm text-gray-700 hover:text-primary-blue hover:bg-gray-50 rounded">X-Ray Services</a>
+                </div>
+            </details>
+            
+            <a href="#gallery" class="flex items-center py-3 px-4 text-dark-text hover:bg-primary-blue hover:text-white rounded-lg transition-all mb-1">
+                <i class="fas fa-images w-6 text-primary-blue mr-3"></i>
+                <span class="font-medium">Gallery</span>
+            </a>
+            
+            <a href="#testimonials" class="flex items-center py-3 px-4 text-dark-text hover:bg-primary-blue hover:text-white rounded-lg transition-all mb-1">
+                <i class="fas fa-comments w-6 text-primary-blue mr-3"></i>
+                <span class="font-medium">Testimonials</span>
+            </a>
+            
+            <a href="#faq" class="flex items-center py-3 px-4 text-dark-text hover:bg-primary-blue hover:text-white rounded-lg transition-all mb-1">
+                <i class="fas fa-question-circle w-6 text-primary-blue mr-3"></i>
+                <span class="font-medium">FAQ</span>
+            </a>
+            
+            <a href="appointment.html" class="flex items-center justify-center py-3 px-4 bg-secondary-orange text-white hover:bg-orange-600 rounded-lg transition-all mt-4 font-semibold">
+                <i class="fas fa-calendar-check mr-2"></i>
+                Book Appointment
+            </a>
+            
+            <!-- Contact Info at Bottom -->
+            <div class="mt-6 pt-4 border-t border-gray-200">
+                <a href="tel:+91-7991153348" class="flex items-center py-2 text-sm text-gray-600 hover:text-primary-blue">
+                    <i class="fas fa-phone text-primary-blue mr-3"></i>
+                    <span>+91-7991153348</span>
+                </a>
+                <a href="mailto:info@drmanishranjan.com" class="flex items-center py-2 text-sm text-gray-600 hover:text-primary-blue">
+                    <i class="fas fa-envelope text-primary-blue mr-3"></i>
+                    <span>info@drmanishranjan.com</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 opacity-0 invisible transition-all duration-300"></div>
     <!-- Knee Replacement Section -->
-    <section class="service-detail-section">
-        <div class="service-hero">
-            <div class="container">
-                <h1 class="fade-in">ACL Reconstruction Surgery</h1>
-                <div class="breadcrumb fade-in">
+    <section class="py-16">
+        <div class="bg-gradient-to-r from-primary-blue via-[#00447c] to-[#005a9c] py-24 text-center relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4">
+                <h1 class="text-white text-5xl font-bold mb-4" class="text-white text-4xl lg:text-5xl font-bold">ACL Reconstruction Surgery</h1>
+                <div class="text-white/90 text-base mt-4">
                     <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>ACL Reconstruction</span>
                 </div>
             </div>
         </div>
         
-        <div class="container">
-            <div class="service-content-wrapper">
-                <div class="service-main-content fade-in-up">
-                    <h2>Expert ACL Reconstruction in Patna</h2>
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 lg:gap-8 py-8 lg:py-12">
+                <div class="bg-white rounded-xl shadow-lg p-5 sm:p-6 lg:p-8">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-blue mb-4 sm:mb-6">Expert ACL Reconstruction in Patna</h2>
                     
-                    <div class="service-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='500'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23e8f4f8;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23d1e7f0;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad1)' width='900' height='500'/%3E%3Ccircle cx='450' cy='250' r='100' fill='%2300447c' opacity='0.1'/%3E%3Ctext x='450' y='220' font-family='Arial' font-size='36' font-weight='bold' fill='%2300447c' text-anchor='middle'%3EACL%20Reconstruction%3C/text%3E%3Ctext x='450' y='260' font-family='Arial' font-size='24' fill='%23676767' text-anchor='middle'%3ESurgery Procedure%3C/text%3E%3Ctext x='450' y='300' font-family='Arial' font-size='18' fill='%23f97425' text-anchor='middle'%3EAdvanced X-Ray Imaging%3C/text%3E%3C/svg%3E" alt="Knee Replacement Surgery">
+                    <div class="mb-6 lg:mb-8 rounded-lg overflow-hidden"><img class="w-full h-auto" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='500'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23e8f4f8;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23d1e7f0;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad1)' width='900' height='500'/%3E%3Ccircle cx='450' cy='250' r='100' fill='%2300447c' opacity='0.1'/%3E%3Ctext x='450' y='220' font-family='Arial' font-size='36' font-weight='bold' fill='%2300447c' text-anchor='middle'%3EACL%20Reconstruction%3C/text%3E%3Ctext x='450' y='260' font-family='Arial' font-size='24' fill='%23676767' text-anchor='middle'%3ESurgery Procedure%3C/text%3E%3Ctext x='450' y='300' font-family='Arial' font-size='18' fill='%23f97425' text-anchor='middle'%3EAdvanced X-Ray Imaging%3C/text%3E%3C/svg%3E" alt="Knee Replacement Surgery">
                     </div>
                     
-                    <h3>About Knee Replacement Surgery</h3>
-                    <p><strong>Knee replacement surgery</strong>, also known as knee arthroplasty, is one of the most effective orthopedic procedures to restore mobility, reduce pain, and improve the quality of life for people suffering from severe knee joint damage. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Whether due to osteoarthritis, rheumatoid arthritis, or post-traumatic injuries, this surgery replaces damaged parts of the knee joint with artificial implants that mimic the function of a natural knee.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-text mb-3 sm:mb-4 mt-6 sm:mt-8">About ACL Reconstruction Surgery</h3>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4"><strong>ACL (Anterior Cruciate Ligament) reconstruction</strong> is a surgical procedure to replace a torn ACL in the knee with a graft tissue. The ACL is one of the key ligaments providing knee stability, especially during cutting, pivoting, and jumping movements. When torn, it causes knee instability, pain, swelling, and significantly limits athletic performance and daily activities.</p>
                     
-                    <p>Under the care of <strong>Dr. Manish Ranjan</strong>, a renowned <strong>knee replacement surgeon in Patna</strong> and one of the <strong>best knee replacement surgeons in India</strong>, patients receive comprehensive evaluation, modern surgical care, and personalized recovery programs. His expertise ensures long-lasting results, helping patients regain mobility and confidence in their daily lives.</p>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">Under the expert care of <strong>Dr. Manish Ranjan</strong>, recognized as one of the leading <strong>sports medicine and ACL specialists in Patna</strong>, patients receive advanced arthroscopic ACL reconstruction using modern techniques that ensure faster recovery, excellent stability, and successful return to sports. His experience with athletes and active individuals delivers outcomes that restore confidence and performance.</p>
                     
-                    <h3>What Is Knee Replacement Surgery?</h3>
-                    <p>Knee replacement surgery involves removing damaged cartilage and bone from the surface of the knee joint and replacing them with metal and plastic implants. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. These implants recreate the natural movement of the knee and significantly reduce pain and stiffness.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-text mb-3 sm:mb-4 mt-6 sm:mt-8">What Is ACL Reconstruction?</h3>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">ACL reconstruction involves removing the torn ligament and replacing it with a graft, typically taken from the patient's own hamstring tendon, patellar tendon, or quadriceps tendon (autograft), or from donor tissue (allograft). The surgery is performed arthroscopically using small incisions, a camera, and specialized instruments, minimizing tissue damage and speeding recovery.</p>
                     
-                    <p>It is recommended when conservative treatments like physiotherapy, medications, or injections fail to provide relief. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. The goal is to provide the best knee replacement treatment that allows pain-free movement and improved joint stability.</p>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">Unlike many ligaments, the ACL cannot heal on its own when completely torn. Reconstruction is recommended for active individuals, athletes, those with knee instability affecting daily life, or when combined with other knee injuries (meniscus or cartilage damage). The goal is to restore knee stability, prevent further damage to cartilage and meniscus, and enable return to pre-injury activity levels.</p>
                     
-                    <h3>Types of Knee Replacement Surgeries</h3>
-                    <p>The type of surgery depends on the extent of joint damage and the patient's overall health. The main types include:</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-text mb-3 sm:mb-4 mt-6 sm:mt-8">When is ACL Reconstruction Needed?</h3>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">ACL tears typically occur during sports or activities involving:</p>
                     
-                    <ol>
-                        <li>
-                            <strong>Total Knee Replacement (TKR):</strong> This is the most common form, where the entire knee joint is replaced. Lorem ipsum dolor sit amet, consectetur adipiscing elit. It's suitable for patients with advanced arthritis or joint damage. Dr. Manish Ranjan is among the BEST Total Knee Replacement Doctors in India, known for his precision and minimally invasive surgical techniques.
+                    <ul class="space-y-3 sm:space-y-4 mb-6 text-sm sm:text-base text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Sudden Direction Changes:</strong> Quick pivoting or cutting movements common in football, basketball, soccer, and badminton</div>
                         </li>
-                        <li>
-                            <strong>Partial (Unicompartmental) Knee Replacement:</strong> Only the damaged part of the knee is replaced. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. This surgery preserves healthy bone and ligaments, allowing quicker recovery and more natural knee movement.
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Landing from Jumps:</strong> Awkward landings causing the knee to buckle or twist</div>
                         </li>
-                        <li>
-                            <strong>Bilateral Knee Replacement:</strong> In cases of severe arthritis in both knees, both joints are replaced during a single operation or staged surgeries. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Patients benefit from a balanced gait and faster rehabilitation.
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Direct Trauma:</strong> Impact to the knee during contact sports or accidents</div>
                         </li>
-                        <li>
-                            <strong>Revision Knee Replacement:</strong> This is performed when a previous knee replacement needs correction due to wear, infection, or implant loosening. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. Choosing the <strong>best knee replacement surgeon in India</strong> ensures proper assessment and long-term results.
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Sudden Stopping:</strong> Rapid deceleration with foot planted</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Hyperextension:</strong> Knee forced beyond its normal range of motion</div>
+                        </li>
+                    </ul>
+                    
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-text mb-3 sm:mb-4 mt-6 sm:mt-8">Types of ACL Reconstruction Grafts</h3>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">Dr. Manish Ranjan offers several graft options, each with specific advantages:</p>
+                    
+                    <ol class="list-decimal list-outside ml-5 sm:ml-6 space-y-3 sm:space-y-4 mb-6 text-sm sm:text-base text-gray-700">
+                        <li class="pl-2">
+                            <strong class="text-primary-blue">Hamstring Tendon Autograft:</strong> Most commonly used, harvested from the patient's own hamstring muscles. Provides strong, flexible graft with smaller incisions, less anterior knee pain, and good cosmetic results. Ideal for most patients.
+                        </li>
+                        <li class="pl-2">
+                            <strong class="text-primary-blue">Patellar Tendon Autograft (BTB):</strong> "Gold standard" graft with bone blocks on each end for strong fixation. Preferred for high-demand athletes and heavy laborers. May cause more anterior knee pain but excellent stability.
+                        </li>
+                        <li class="pl-2">
+                            <strong class="text-primary-blue">Quadriceps Tendon Autograft:</strong> Thick, strong graft suitable for large patients or revision cases. Good option when other autografts are unsuitable.
+                        </li>
+                        <li class="pl-2">
+                            <strong class="text-primary-blue">Allograft (Donor Tissue):</strong> Tissue from deceased donor, eliminates graft harvest surgery and post-op pain. Suitable for older patients, revision cases, or multi-ligament reconstructions. Slightly higher re-tear risk in young athletes.
                         </li>
                     </ol>
                     
-                    <h3>Knee Replacement Surgery Process</h3>
-                    <p>The knee replacement surgery procedure is performed under anesthesia and typically lasts about 1–2 hours. The steps include:</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-text mb-3 sm:mb-4 mt-6 sm:mt-8">The ACL Reconstruction Procedure</h3>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">ACL reconstruction is performed arthroscopically and typically takes 1-2 hours:</p>
                     
-                    <ul>
-                        <li><strong>Preoperative Evaluation:</strong><br>Complete physical assessment, imaging, and surgical planning are done to customize the implant for each patient. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        <li><strong>Anesthesia and Incision:</strong><br>Either spinal or general anesthesia is used. The surgeon makes an incision over the knee to access the joint. Sed do eiusmod tempor incididunt ut labore et dolore.</li>
-                        <li><strong>Removal of Damaged Tissue:</strong><br>Damaged cartilage and bone are carefully removed. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</li>
-                        <li><strong>Implant Placement:</strong><br>Artificial components made of metal and polyethylene are fixed using surgical cement or advanced bonding techniques. Duis aute irure dolor in reprehenderit.</li>
-                        <li><strong>Closure and Recovery:</strong><br>The incision is closed, and the patient is shifted to recovery for observation and physiotherapy initiation. Excepteur sint occaecat cupidatat non proident.</li>
+                    <ul class="space-y-3 sm:space-y-4 mb-6 text-sm sm:text-base text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Pre-operative Assessment:</strong> Physical examination, MRI scan to assess ACL tear and other injuries, discussion of graft options and surgical plan.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Anesthesia:</strong> General or regional anesthesia administered for complete comfort during surgery.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Graft Harvest:</strong> Selected tendon (hamstring, patellar, or quadriceps) is carefully harvested and prepared.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Arthroscopic Access:</strong> Small incisions made, camera inserted to visualize inside the knee and assess all structures.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Torn ACL Removal:</strong> Remaining damaged ACL tissue is removed, and bone tunnels are precisely drilled in the femur and tibia.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Graft Placement & Fixation:</strong> New graft is pulled through tunnels and secured with screws, buttons, or other fixation devices at anatomically correct positions.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Associated Repairs:</strong> Any meniscus tears or cartilage damage is addressed simultaneously.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary-orange mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Closure:</strong> Small incisions closed with sutures, knee bandaged, and brace applied.</div>
+                        </li>
                     </ul>
                     
-                    <h3>Benefits of Knee Replacement Surgery</h3>
-                    <ul>
-                        <li><strong>Pain-Free Movement:</strong> Restores mobility and eliminates chronic knee pain. Lorem ipsum dolor sit amet.</li>
-                        <li><strong>Improved Quality of Life:</strong> Enables active participation in daily and recreational activities. Consectetur adipiscing elit.</li>
-                        <li><strong>Long-Lasting Results:</strong> The longest-lasting knee replacement implants can function well for 20 years or more. Sed do eiusmod tempor incididunt.</li>
-                        <li><strong>Enhanced Joint Stability:</strong> Corrects deformities and improves leg alignment. Ut labore et dolore magna aliqua.</li>
-                        <li><strong>High Success Rate:</strong> The knee replacement surgery success rate in India is above 95% with experienced surgeons like Dr. Manish Ranjan.</li>
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-text mb-3 sm:mb-4 mt-6 sm:mt-8">Benefits of ACL Reconstruction</h3>
+                    <ul class="space-y-3 sm:space-y-4 mb-6 text-sm sm:text-base text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Restores Knee Stability:</strong> Eliminates the feeling of knee giving way during activities, allowing confident movement</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Prevents Further Damage:</strong> Protects meniscus and cartilage from additional injury caused by instability</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Return to Sports:</strong> Enables athletes to return to cutting, pivoting, and high-impact activities at pre-injury levels</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Reduces Arthritis Risk:</strong> Restoring stability helps prevent early onset of knee arthritis</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Minimally Invasive:</strong> Arthroscopic technique means smaller scars, less pain, and faster recovery</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">High Success Rate:</strong> Over 90% of patients return to their desired activity level with proper rehabilitation</div>
+                        </li>
                     </ul>
                     
-                    <h3>Pain Management After Knee Replacement</h3>
-                    <p>Modern pain control techniques help patients recover comfortably. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dr. Manish Ranjan uses a multimodal pain management approach including regional anesthesia, medications, and physiotherapy protocols to minimize discomfort and accelerate healing.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-text mb-3 sm:mb-4 mt-6 sm:mt-8">Recovery Timeline After ACL Reconstruction</h3>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">ACL reconstruction requires dedicated rehabilitation for optimal outcomes. Dr. Manish Ranjan provides comprehensive rehab protocols:</p>
                     
-                    <h3>Recovery and Rehabilitation Timeline</h3>
-                    <p>Post-surgery, patients usually start walking with assistance within 24–48 hours. The typical knee replacement surgery recovery time is:</p>
-                    
-                    <ul>
-                        <li><strong>Week 1–2:</strong> Begin physiotherapy and walking with support. Lorem ipsum dolor sit amet.</li>
-                        <li><strong>Week 3–6:</strong> Increased strength and range of motion. Consectetur adipiscing elit, sed do eiusmod.</li>
-                        <li><strong>Week 6–12:</strong> Resumption of normal activities and independence. Tempor incididunt ut labore.</li>
-                        <li><strong>3–6 Months:</strong> Return to active lifestyle, sports, and travel. Dolore magna aliqua ut enim ad minim.</li>
+                    <ul class="space-y-3 sm:space-y-4 mb-6 text-sm sm:text-base text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-calendar-check text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Weeks 0-2 (Early Phase):</strong> Focus on reducing swelling, regaining full knee extension, gentle range of motion exercises, weight-bearing as tolerated with crutches. Most patients go home same day or next day.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-calendar-check text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Weeks 2-6:</strong> Gradual increase in range of motion, quad strengthening exercises, transition from crutches to walking independently, stationary cycling begins.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-calendar-check text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Months 2-3:</strong> Progressive strengthening, balance training, light jogging on treadmill, swimming, and cycling. Most patients return to office work and daily activities.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-calendar-check text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Months 4-6:</strong> Sport-specific training begins, agility drills, running progression, return to non-contact sports activities.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-calendar-check text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Months 6-9:</strong> Advanced plyometrics, return to contact sports training, strength should be 90% of uninjured leg.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-calendar-check text-primary-blue mt-1 mr-3 flex-shrink-0"></i>
+                            <div><strong class="text-primary-blue">Months 9-12:</strong> Full return to competitive sports after passing functional tests, surgeon clearance, and demonstrating adequate strength, stability, and confidence.</div>
+                        </li>
                     </ul>
                     
-                    <h3>Risks and Complications</h3>
-                    <p>While knee replacement is highly successful, potential risks include infection, stiffness, blood clots, or implant wear. Lorem ipsum dolor sit amet, consectetur adipiscing elit. However, when performed by a skilled knee replacement surgeon in India like Dr. Manish Ranjan, such complications are minimal. His meticulous surgical technique, sterile environment, and careful postoperative care ensure high patient safety.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-text mb-3 sm:mb-4 mt-6 sm:mt-8">Risks and Complications</h3>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">ACL reconstruction is generally safe, but potential risks include infection, blood clots, graft failure or re-tear (5-10% risk), knee stiffness, persistent pain, numbness near incisions, and graft donor site pain. Dr. Manish Ranjan's expertise in sports medicine and arthroscopic techniques minimizes these risks through precise surgical execution and comprehensive post-operative protocols.</p>
                     
-                    <h3>Cost of Knee Replacement Surgery in India and Patna</h3>
-                    <p>The knee replacement surgery cost in India varies depending on hospital, implant type, and surgeon expertise. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. However, the knee replacement surgery cost in Patna is significantly more affordable than metro cities, while maintaining international standards of care. Dr. Manish Ranjan, famed as the best knee replacement surgeon in Patna, provides exceptional quality and affordability in knee replacement surgeries.</p>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">Success depends heavily on patient compliance with rehabilitation. Following the prescribed physical therapy program, avoiding premature return to sports, and maintaining leg strength are crucial for optimal outcomes and preventing re-injury.</p>
                     
-                    <h3>Frequently Asked Questions (FAQ's)</h3>
-                    <div class="faq-inline">
-                        <div class="faq-item">
-                            <h4><i class="fas fa-minus"></i> How much is a full knee replacement?</h4>
-                            <p>The cost of knee replacement surgery varies based on the patient's medical requirements. Lorem ipsum dolor sit amet, consectetur adipiscing elit. However, Dr. Manish Ranjan, famed as the best knee replacement surgeon in Patna, provides exceptional quality and affordability in knee replacement surgeries.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-text mb-3 sm:mb-4 mt-6 sm:mt-8">Cost of ACL Reconstruction in Patna</h3>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">ACL reconstruction cost in Patna varies based on graft type (autograft vs allograft), hospital facilities, implant quality, and any additional procedures needed (meniscus repair). Patna offers significantly more affordable pricing compared to metro cities while Dr. Manish Ranjan ensures international standard techniques and outcomes.</p>
+                    
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">At Jeevandan Health OPD, transparent pricing and flexible payment options are available. For detailed cost estimates tailored to your specific case, contact <strong>+91-7991153348</strong> or schedule a consultation.</p>
+                    
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-text mb-3 sm:mb-4 mt-6 sm:mt-8">Frequently Asked Questions (FAQ's)</h3>
+                    <div class="space-y-3 sm:space-y-4">
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <h4 class="bg-light-bg p-4 sm:p-5 font-semibold text-dark-text flex items-start text-sm sm:text-base cursor-pointer hover:bg-gray-100 transition">
+                                <i class="fas fa-minus text-secondary-orange mr-3 mt-1 flex-shrink-0"></i>
+                                <span>How long does it take to recover from ACL surgery?</span>
+                            </h4>
+                            <div class="p-4 sm:p-5 bg-white">
+                                <p class="text-sm sm:text-base text-gray-700 leading-relaxed">Initial recovery takes 2-3 months to return to daily activities and light sports. Full recovery and return to competitive sports requires 6-12 months, depending on sport demands and rehabilitation progress. Athletes typically return to contact sports at 9-12 months after passing functional tests and receiving surgeon clearance.</p>
+                            </div>
                         </div>
-                        <div class="faq-item">
-                            <h4><i class="fas fa-plus"></i> What's the best age to have a knee replacement?</h4>
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <h4 class="bg-light-bg p-4 sm:p-5 font-semibold text-dark-text flex items-start text-sm sm:text-base cursor-pointer hover:bg-gray-100 transition">
+                                <i class="fas fa-plus text-primary-blue mr-3 mt-1 flex-shrink-0"></i>
+                                <span>Can an ACL tear heal without surgery?</span>
+                            </h4>
+                            <div class="p-4 sm:p-5 bg-white hidden">
+                                <p class="text-sm sm:text-base text-gray-700 leading-relaxed">Complete ACL tears do not heal on their own due to limited blood supply. Partial tears may heal with conservative treatment (bracing, physical therapy). However, without surgery, most patients experience persistent instability, limiting sports and risking further damage to meniscus and cartilage. Surgery is recommended for active individuals, athletes, and those with instability affecting daily life.</p>
+                            </div>
                         </div>
-                        <div class="faq-item">
-                            <h4><i class="fas fa-plus"></i> Which surgery is best for knee replacement?</h4>
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <h4 class="bg-light-bg p-4 sm:p-5 font-semibold text-dark-text flex items-start text-sm sm:text-base cursor-pointer hover:bg-gray-100 transition">
+                                <i class="fas fa-plus text-primary-blue mr-3 mt-1 flex-shrink-0"></i>
+                                <span>Which graft is best for ACL reconstruction?</span>
+                            </h4>
+                            <div class="p-4 sm:p-5 bg-white hidden">
+                                <p class="text-sm sm:text-base text-gray-700 leading-relaxed">Hamstring autograft is most commonly used for its strong, flexible properties and minimal donor site pain. Patellar tendon (BTB) is the "gold standard" for high-demand athletes needing maximum stability. The best choice depends on age, activity level, and individual anatomy. Dr. Manish Ranjan discusses all options during consultation to select the optimal graft for each patient.</p>
+                            </div>
                         </div>
-                        <div class="faq-item">
-                            <h4><i class="fas fa-plus"></i> What happens 20 years after knee replacement?</h4>
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <h4 class="bg-light-bg p-4 sm:p-5 font-semibold text-dark-text flex items-start text-sm sm:text-base cursor-pointer hover:bg-gray-100 transition">
+                                <i class="fas fa-plus text-primary-blue mr-3 mt-1 flex-shrink-0"></i>
+                                <span>When can I walk after ACL surgery?</span>
+                            </h4>
+                            <div class="p-4 sm:p-5 bg-white hidden">
+                                <p class="text-sm sm:text-base text-gray-700 leading-relaxed">Most patients walk with crutches immediately after surgery, bearing weight as tolerated. Crutches are typically needed for 1-3 weeks. Walking without aids usually begins at 2-4 weeks post-surgery. However, progression depends on pain, swelling, and quadriceps strength. Following your surgeon's protocol and physical therapy program ensures safe, optimal recovery.</p>
+                            </div>
                         </div>
-                        <div class="faq-item">
-                            <h4><i class="fas fa-plus"></i> What type of knee replacement is most successful?</h4>
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <h4 class="bg-light-bg p-4 sm:p-5 font-semibold text-dark-text flex items-start text-sm sm:text-base cursor-pointer hover:bg-gray-100 transition">
+                                <i class="fas fa-plus text-primary-blue mr-3 mt-1 flex-shrink-0"></i>
+                                <span>What is the success rate of ACL reconstruction?</span>
+                            </h4>
+                            <div class="p-4 sm:p-5 bg-white hidden">
+                                <p class="text-sm sm:text-base text-gray-700 leading-relaxed">ACL reconstruction has a 90-95% success rate for restoring knee stability and function. About 85-90% of athletes return to their pre-injury sport level. Success depends on surgical technique, graft choice, rehabilitation compliance, and timing of return to sports. Dr. Manish Ranjan's expertise in sports medicine ensures optimal outcomes for athletes and active individuals.</p>
+                            </div>
                         </div>
-                        <div class="faq-item">
-                            <h4><i class="fas fa-plus"></i> How long will knee replacement last?</h4>
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <h4 class="bg-light-bg p-4 sm:p-5 font-semibold text-dark-text flex items-start text-sm sm:text-base cursor-pointer hover:bg-gray-100 transition">
+                                <i class="fas fa-plus text-primary-blue mr-3 mt-1 flex-shrink-0"></i>
+                                <span>How much does ACL surgery cost in Patna?</span>
+                            </h4>
+                            <div class="p-4 sm:p-5 bg-white hidden">
+                                <p class="text-sm sm:text-base text-gray-700 leading-relaxed">ACL reconstruction cost in Patna is significantly more affordable than metro cities while maintaining world-class standards. Cost varies based on graft type, hospital choice, and additional procedures. Dr. Manish Ranjan provides transparent pricing and flexible payment options at Jeevandan Health OPD. For detailed cost estimates, call <strong>+91-7991153348</strong>.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <aside class="service-sidebar fade-in-right">
-                    <div class="sidebar-widget">
-                        <h3><i class="fas fa-arrow-right"></i> ACL Reconstruction</h3>
-                        <a href="hip-replacement.html"><h4>Hip Replacement</h4></a>
-                        <a href="hip-preservation.html"><h4>Hip Preservation</h4></a>
-                        <a href="trauma-surgery.html"><h4>Trauma Surgery</h4></a>
-                        <a href="arthritis-treatment.html"><h4>Arthritis Treatment</h4></a>
-                        <a href="prp-treatment.html"><h4>PRP Treatment</h4></a>
-                        <a href="blood-test.html"><h4>Blood Test</h4></a>
-                        <a href="xray-services.html"><h4>X-ray Services</h4></a>
-                        <a href="acl-reconstruction.html"><h4>ACL Reconstruction</h4></a>
-                        <a href="arthroscopy-surgery.html"><h4>Arthroscopy Surgery</h4></a>
-                        <a href="sports-injury-treatment.html"><h4>Sports Injury Treatment</h4></a>
+                <aside class="space-y-6">
+                    <div class="bg-white rounded-xl shadow-lg p-5 sm:p-6 lg:p-8 sticky top-4">
+                        <h3 class="text-xl sm:text-2xl font-bold text-primary-blue mb-4 sm:mb-6 flex items-center"><i class="fas fa-arrow-right text-secondary-orange mr-3"></i><span>ACL Reconstruction</span></h3><div class="space-y-2"><a href="hip-replacement.html" class="block p-3 sm:p-4 bg-light-bg hover:bg-primary-blue hover:text-white rounded-lg transition text-sm sm:text-base font-medium text-dark-text">Hip Replacement</a><a href="hip-preservation.html" class="block p-3 sm:p-4 bg-light-bg hover:bg-primary-blue hover:text-white rounded-lg transition text-sm sm:text-base font-medium text-dark-text">Hip Preservation</a>
+                        <a href="trauma-surgery.html" class="block p-3 sm:p-4 bg-light-bg hover:bg-primary-blue hover:text-white rounded-lg transition text-sm sm:text-base font-medium text-dark-text">Trauma Surgery</a>
+                        <a href="arthritis-treatment.html" class="block p-3 sm:p-4 bg-light-bg hover:bg-primary-blue hover:text-white rounded-lg transition text-sm sm:text-base font-medium text-dark-text">Arthritis Treatment</a>
+                        <a href="prp-treatment.html" class="block p-3 sm:p-4 bg-light-bg hover:bg-primary-blue hover:text-white rounded-lg transition text-sm sm:text-base font-medium text-dark-text">PRP Treatment</a>
+                        <a href="blood-test.html" class="block p-3 sm:p-4 bg-light-bg hover:bg-primary-blue hover:text-white rounded-lg transition text-sm sm:text-base font-medium text-dark-text">Blood Test</a>
+                        <a href="xray-services.html" class="block p-3 sm:p-4 bg-light-bg hover:bg-primary-blue hover:text-white rounded-lg transition text-sm sm:text-base font-medium text-dark-text">X-ray Services</a>
+                        <a href="acl-reconstruction.html" class="block p-3 sm:p-4 bg-light-bg hover:bg-primary-blue hover:text-white rounded-lg transition text-sm sm:text-base font-medium text-dark-text">ACL Reconstruction</a>
+                        <a href="arthroscopy-surgery.html" class="block p-3 sm:p-4 bg-light-bg hover:bg-primary-blue hover:text-white rounded-lg transition text-sm sm:text-base font-medium text-dark-text">Arthroscopy Surgery</a>
+                        <a href="sports-injury-treatment.html" class="block p-3 sm:p-4 bg-light-bg hover:bg-primary-blue hover:text-white rounded-lg transition text-sm sm:text-base font-medium text-dark-text">Sports Injury Treatment</a>
                     </div>
                     
-                    <div class="sidebar-contact">
-                        <h3>Have any Questions?<br>Call us Today!</h3>
-                        <a href="tel:+919386737895" class="contact-phone">+919386737895</a>
+                    <div class="bg-gradient-to-br from-primary-blue to-blue-700 rounded-xl shadow-lg p-6 sm:p-8 text-white text-center"><i class="fas fa-phone-alt text-4xl sm:text-5xl text-secondary-orange mb-4"></i><h3 class="text-lg sm:text-xl font-bold mb-2">Have any Questions?</h3><p class="text-base sm:text-lg mb-4">Call us Today!</p><a href="tel:+91-7991153348" class="block bg-secondary-orange hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg text-lg sm:text-xl transition">+91-7991153348</a>
                     </div>
                 </aside>
             </div>
@@ -268,72 +502,79 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>About Dr. Manish Ranjan</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <div class="footer-social">
-                        <a href="http://facebook.com/drmanishranjan" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/drmanishranjan/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/channel/UCczjpMVkbH4vmCTLSMMVTFA" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <footer class="bg-dark-gray text-white relative overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://www.orthopatna.com/wp-content/uploads/2021/01/Orthopedics-apna-hospital-banner-5.jpg" alt="Footer Background" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="relative container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <!-- About Section -->
+                <div class="sm:col-span-2">
+                    <h3 class="text-xl font-bold mb-4">About Dr. Manish Ranjan</h3>
+                    <p class="text-gray-300 mb-4 text-sm sm:text-base">Dr. Manish Ranjan is a highly skilled orthopedic surgeon specializing in joint replacements, trauma surgery, and sports medicine. With extensive training and years of experience, Dr. Gaurav provides exceptional orthopedic care with a patient-first approach at Jeevandan Health OPD, Patna.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=100091876871414" target="_blank" class="w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center hover:bg-secondary-orange transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/dr.ashwinigaurav" target="_blank" class="w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center hover:bg-secondary-orange transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@dr.ashwinigaurav" target="_blank" class="w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center hover:bg-secondary-orange transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div class="footer-column">
-                    <h3>Our Services</h3>
-                    <div class="footer-services">
-                        <ul>
-                            <li><a href="knee-replacement.html">Knee Replacement</a></li>
-                            <li><a href="hip-replacement.html">Hip Replacement</a></li>
-                            <li><a href="hip-preservation.html">Hip Preservation</a></li>
-                            <li><a href="trauma-surgery.html">Trauma Surgery</a></li>
-                            <li><a href="arthritis-treatment.html">Arthritis</a></li>
-                            <li><a href="plaster-casts.html">Plaster Casts</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="prp-treatment.html">PRP Treatment</a></li>
-                            <li><a href="blood-test.html">Blood Test</a></li>
-                            <li><a href="xray-services.html">X-ray Services</a></li>
-                            <li><a href="acl-reconstruction.html">ACL Reconstruction</a></li>
-                            <li><a href="arthroscopy-surgery.html">Arthroscopy Surgery</a></li>
-                            <li><a href="sports-injury-treatment.html">Sports Injury</a></li>
-                        </ul>
-                    </div>
+                <!-- Our Services -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Our Services</h3>
+                    <ul class="space-y-2 text-sm sm:text-base">
+                        <li><a href="knee-replacement.html" class="text-gray-300 hover:text-secondary-orange transition">Knee Replacement</a></li>
+                        <li><a href="hip-replacement.html" class="text-gray-300 hover:text-secondary-orange transition">Hip Replacement</a></li>
+                        <li><a href="hip-preservation.html" class="text-gray-300 hover:text-secondary-orange transition">Hip Preservation</a></li>
+                        <li><a href="trauma-surgery.html" class="text-gray-300 hover:text-secondary-orange transition">Trauma Surgery</a></li>
+                        <li><a href="arthritis-treatment.html" class="text-gray-300 hover:text-secondary-orange transition">Arthritis</a></li>
+                        <li><a href="plaster-casts.html" class="text-gray-300 hover:text-secondary-orange transition">Plaster Casts</a></li>
+                        <li><a href="prp-treatment.html" class="text-gray-300 hover:text-secondary-orange transition">PRP Treatment</a></li>
+                        <li><a href="blood-test.html" class="text-gray-300 hover:text-secondary-orange transition">Blood Test</a></li>
+                        <li><a href="xray-services.html" class="text-gray-300 hover:text-secondary-orange transition">X-ray Services</a></li>
+                        <li><a href="acl-reconstruction.html" class="text-gray-300 hover:text-secondary-orange transition">ACL Reconstruction</a></li>
+                        <li><a href="arthroscopy-surgery.html" class="text-gray-300 hover:text-secondary-orange transition">Arthroscopy Surgery</a></li>
+                        <li><a href="sports-injury-treatment.html" class="text-gray-300 hover:text-secondary-orange transition">Sports Injury</a></li>
+                    </ul>
                 </div>
 
-                <div class="footer-column">
-                    <h3>Google Map Location</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.1247617405475!2d85.15283661501769!3d25.60077018371003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed594381e16cf9%3A0xf97093625b6f489d!2sDr%20Ashwini%20Gaurav%20Orthopaedic%2C%20Arthritis%20Doctor!5e0!3m2!1sen!2sus!4v1610419942478!5m2!1sen!2sus" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <!-- Google Map Location -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Google Map Location</h3>
+                    <div class="w-full h-48 rounded-lg overflow-hidden mb-4">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.8791470392547!2d85.13465931501265!3d25.611751983722707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58dce0d93279%3A0x4c204c8a22b2b576!2sDr.%20Ashwini%20Gaurav!5e0!3m2!1sen!2sin!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="footer-bottom">
-            <div class="container">
-                <p>Copyright 2025 | All rights reserved By Dr. Manish Ranjan</p>
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 mt-6 sm:mt-8 pt-4 sm:pt-6 text-center text-gray-400 text-xs sm:text-sm">
+                <p>&copy; 2025 OrthoPatna - Dr. Manish Ranjan. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919386737895" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp us">
-        <i class="fab fa-whatsapp"></i>
+    <!-- Fixed WhatsApp Button (Bottom Right) -->
+    <a href="https://wa.me/917991153348" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg transition z-50" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp text-white text-3xl"></i>
     </a>
 
-    <!-- Floating Call Button -->
-    <a href="tel:+919386737895" class="call-float" aria-label="Call Now" title="Call Now">
-        <i class="fas fa-phone-alt"></i>
+    <!-- Fixed Call Button (Bottom Right, above WhatsApp) -->
+    <a href="tel:+91-7991153348" class="fixed bottom-24 right-6 w-14 h-14 bg-primary-blue hover:bg-blue-700 rounded-full flex items-center justify-center shadow-lg transition z-50" aria-label="Call">
+        <i class="fas fa-phone-alt text-white text-2xl"></i>
     </a>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Custom JavaScript -->
-    <script src="js/script.js"></script>
 </body>
 </html>
+
+
+
 

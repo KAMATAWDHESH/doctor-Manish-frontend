@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head><title>Test Service Cards</title></head>
+<head><title>Test Service Cards</title>    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#00447c',
+                        'secondary-orange': '#f97425',
+                        'light-bg': '#f6f3ee',
+                        'dark-text': '#032e42',
+                        'gray-text': '#676767',
+                        'dark-gray': '#252628',
+                    },
+                    fontFamily: {
+                        'primary': ['Poppins', 'sans-serif'],
+                        'secondary': ['Roboto', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
 <body style="margin:0; padding:20px; background:#f6f3ee;">
 <h2 style="text-align:center; color:#032e42;">How Can I Help You?</h2>
 <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:30px; max-width:1200px; margin:0 auto; padding:20px;">
