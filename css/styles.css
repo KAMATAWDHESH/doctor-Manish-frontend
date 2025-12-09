@@ -215,9 +215,24 @@ iframe {
 }
 
 /* FAQ Accordion Mobile */
+/* FAQ Accordion Visibility Fix */
+.faq-answer.hidden {
+    display: none !important;
+}
+.faq-answer:not(.hidden) {
+    display: block !important;
+}
 .faq-question {
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    transition: max-height 0.3s ease;
 }
 
 @media (max-width: 768px) {

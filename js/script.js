@@ -103,11 +103,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hide loader after page is fully loaded
     window.addEventListener('load', function() {
         setTimeout(function() {
-            pageLoader.classList.add('hidden');
-            // Remove from DOM after animation completes
-            setTimeout(function() {
-                pageLoader.style.display = 'none';
-            }, 500);
+            if (pageLoader && typeof pageLoader.classList !== 'undefined') {
+                pageLoader.classList.add('hidden');
+                // Remove from DOM after animation completes
+                setTimeout(function() {
+                    if (pageLoader && typeof pageLoader.style !== 'undefined') {
+                        pageLoader.style.display = 'none';
+                    }
+                }, 500);
+            }
         }, 500);
     });
 });
@@ -120,7 +124,9 @@ function updateProgressBar() {
     const progressBar = document.querySelector('.progress-bar');
     const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = (window.pageYOffset / windowHeight) * 100;
-    progressBar.style.width = scrolled + '%';
+    if (progressBar && typeof progressBar.style !== 'undefined') {
+        progressBar.style.width = scrolled + '%';
+    }
 }
 
 window.addEventListener('scroll', debounce(updateProgressBar, 10));
@@ -131,24 +137,25 @@ window.addEventListener('scroll', debounce(updateProgressBar, 10));
 
 const header = document.querySelector('.main-header');
 const nav = document.querySelector('.main-nav');
-const headerHeight = header.offsetHeight;
+const headerHeight = header ? header.offsetHeight : 0;
 
 function handleStickyHeader() {
     const scrollPosition = window.pageYOffset;
     
-    if (scrollPosition > headerHeight) {
-        header.classList.add('sticky');
-        if (nav) {
-            nav.classList.add('sticky');
+    if (header) {
+        if (scrollPosition > headerHeight) {
+            header.classList.add('sticky');
+            if (nav) {
+                nav.classList.add('sticky');
+            }
+            document.body.style.paddingTop = headerHeight + 'px';
+        } else {
+            header.classList.remove('sticky');
+            if (nav) {
+                nav.classList.remove('sticky');
+            }
+            document.body.style.paddingTop = '0';
         }
-        // Add padding to body to prevent jump
-        document.body.style.paddingTop = headerHeight + 'px';
-    } else {
-        header.classList.remove('sticky');
-        if (nav) {
-            nav.classList.remove('sticky');
-        }
-        document.body.style.paddingTop = '0';
     }
 }
 
@@ -779,10 +786,12 @@ formInputs.forEach(input => {
 const backToTopBtn = document.querySelector('.back-to-top');
 
 function handleBackToTop() {
-    if (window.pageYOffset > 300) {
-        backToTopBtn.classList.add('visible');
-    } else {
-        backToTopBtn.classList.remove('visible');
+    if (backToTopBtn && typeof backToTopBtn.classList !== 'undefined') {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
     }
 }
 
@@ -898,12 +907,7 @@ function animateOnScroll() {
     });
 }
 
-// Initial state for animated elements
-document.querySelectorAll('.service-card, .blog-card').forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(30px)';
-    element.style.transition = 'all 0.6s ease';
-});
+
 
 window.addEventListener('scroll', debounce(animateOnScroll, 50));
 window.addEventListener('load', animateOnScroll);
@@ -1136,9 +1140,13 @@ function animateOnScroll() {
         
         if (isVisible && !element.classList.contains('animated')) {
             setTimeout(() => {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-                element.classList.add('animated');
+                if (element && typeof element.style !== 'undefined') {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+                if (element && typeof element.classList !== 'undefined') {
+                    element.classList.add('animated');
+                }
             }, index * 50);
         }
     });
@@ -1148,12 +1156,14 @@ function animateOnScroll() {
 document.addEventListener('DOMContentLoaded', function() {
     const elements = document.querySelectorAll('.service-main-content > *, .service-sidebar > *');
     elements.forEach(element => {
-        if (!element.classList.contains('fade-in') && 
-            !element.classList.contains('fade-in-up') && 
-            !element.classList.contains('fade-in-right')) {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        if (element && typeof element.classList !== 'undefined' && typeof element.style !== 'undefined') {
+            if (!element.classList.contains('fade-in') && 
+                !element.classList.contains('fade-in-up') && 
+                !element.classList.contains('fade-in-right')) {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            }
         }
     });
     
@@ -1167,22 +1177,102 @@ window.addEventListener('scroll', debounce(animateOnScroll, 50));
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
-            const answer = this.nextElementSibling;
-            const icon = this.querySelector('i');
-            
-            // Toggle answer visibility
-            answer.classList.toggle('hidden');
-            
-            // Rotate icon
-            if (icon) {
-                icon.classList.toggle('fa-chevron-down');
-                icon.classList.toggle('fa-chevron-up');
+    // Event delegation for FAQ (main and injury)
+    document.body.addEventListener('click', function(e) {
+        // Main FAQ: button.faq-question
+        if (e.target.closest('.faq-question')) {
+            const question = e.target.closest('.faq-question');
+            let answer = question.nextElementSibling;
+            if (!answer || !answer.classList.contains('faq-answer')) {
+                answer = question.parentElement.querySelector('.faq-answer');
             }
-        });
+            const icon = question.querySelector('i');
+            if (answer) {
+                const isCurrentlyHidden = answer.classList.contains('hidden');
+                // Close all other main FAQs
+                document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+                    if (otherAnswer !== answer) {
+                        otherAnswer.classList.add('hidden');
+                        const otherQuestion = otherAnswer.previousElementSibling;
+                        if (otherQuestion) {
+                            const otherIcon = otherQuestion.querySelector('i');
+                            if (otherIcon && otherIcon.classList.contains('fa-chevron-down')) {
+                                otherIcon.style.transform = 'rotate(0deg)';
+                            }
+                        }
+                    }
+                });
+                // Toggle current FAQ
+                answer.classList.toggle('hidden');
+                if (icon && icon.classList.contains('fa-chevron-down')) {
+                    icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                }
+            }
+            e.preventDefault();
+        }
+        // Injury FAQ: h4.cursor-pointer
+        if (e.target.closest('h4.cursor-pointer')) {
+            const header = e.target.closest('h4.cursor-pointer');
+            let answer = header.nextElementSibling;
+            if (!answer || !(answer.tagName === 'DIV')) {
+                answer = header.parentElement.querySelector('div');
+            }
+            const icon = header.querySelector('i');
+            if (answer) {
+                const isHidden = answer.classList.contains('hidden');
+                // Close all other injury FAQs
+                document.querySelectorAll('h4.cursor-pointer').forEach(otherHeader => {
+                    if (otherHeader !== header) {
+                        let otherAnswer = otherHeader.nextElementSibling;
+                        if (otherAnswer && otherAnswer.tagName === 'DIV') {
+                            otherAnswer.classList.add('hidden');
+                            const otherIcon = otherHeader.querySelector('i');
+                            if (otherIcon) {
+                                otherIcon.classList.remove('fa-minus', 'text-secondary-orange');
+                                otherIcon.classList.add('fa-plus', 'text-primary-blue');
+                            }
+                        }
+                    }
+                });
+                // Toggle current FAQ
+                answer.classList.toggle('hidden');
+                if (icon) {
+                    if (isHidden) {
+                        icon.classList.remove('fa-plus', 'text-primary-blue');
+                        icon.classList.add('fa-minus', 'text-secondary-orange');
+                    } else {
+                        icon.classList.remove('fa-minus', 'text-secondary-orange');
+                        icon.classList.add('fa-plus', 'text-primary-blue');
+                    }
+                }
+            }
+            e.preventDefault();
+        }
+    });
+
+    // On load: injury FAQ only first open, others closed
+    const injuryFaqHeaders = document.querySelectorAll('h4.cursor-pointer');
+    injuryFaqHeaders.forEach((header, idx) => {
+        let answer = header.nextElementSibling;
+        if (!answer || !(answer.tagName === 'DIV')) {
+            answer = header.parentElement.querySelector('div');
+        }
+        const icon = header.querySelector('i');
+        if (answer) {
+            if (idx === 0) {
+                answer.classList.remove('hidden');
+                if (icon) {
+                    icon.classList.remove('fa-plus', 'text-primary-blue');
+                    icon.classList.add('fa-minus', 'text-secondary-orange');
+                }
+            } else {
+                answer.classList.add('hidden');
+                if (icon) {
+                    icon.classList.remove('fa-minus', 'text-secondary-orange');
+                    icon.classList.add('fa-plus', 'text-primary-blue');
+                }
+            }
+        }
     });
 });
 

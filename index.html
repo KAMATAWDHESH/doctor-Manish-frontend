@@ -88,6 +88,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
     <!-- Custom JavaScript -->
     <script src="js/script.js" defer></script>
     
@@ -108,6 +111,13 @@
         .stat-card {
             backdrop-filter: blur(10px);
             background: rgba(0, 68, 124, 0.95);
+        }
+        
+        /* Ensure services section is visible */
+        #services {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
     </style>
 </head>
@@ -135,7 +145,7 @@
                 <!-- Logo -->
                 <div class="w-full lg:w-auto flex justify-center lg:justify-start">
                     <a href="index.html">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='50'%3E%3Crect fill='%2300447c' width='160' height='50' rx='5'/%3E%3Ctext x='80' y='32' font-family='Arial' font-size='20' font-weight='bold' fill='white' text-anchor='middle'%3EDr. Ortho%3C/text%3E%3C/svg%3E" alt="Dr. Manish Ranjan" class="h-12 sm:h-14">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='54'%3E%3Crect fill='%2300447c' width='200' height='54' rx='8'/%3E%3Ctext x='100' y='36' font-family='Arial' font-size='22' font-weight='bold' fill='white' text-anchor='middle'%3EDr. Manish Ranjan%3C/text%3E%3C/svg%3E" alt="Dr. Manish Ranjan" class="h-12 sm:h-14">
                     </a>
                 </div>
 
@@ -227,10 +237,15 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-y-0 left-0 w-80 bg-white text-dark-text transform -translate-x-full transition-transform duration-300 z-[60] overflow-y-auto shadow-2xl">
-        <div class="bg-primary-blue text-white p-4 flex justify-between items-center">
-            <h3 class="text-lg font-bold">Menu</h3>
-            <button id="close-mobile-menu" class="text-white text-2xl hover:text-secondary-orange transition-colors w-8 h-8 flex items-center justify-center">&times;</button>
+    <div id="mobile-menu" class="fixed inset-y-0 left-0 w-80 bg-white text-dark-text transform -translate-x-full transition-transform duration-300 z-[1100] overflow-y-auto shadow-2xl">
+        <div class="bg-primary-blue text-white flex flex-col items-center pt-4 pb-2 px-4">
+            <div class="w-full flex flex-row justify-between items-center mb-2">
+                <h3 class="text-lg font-bold">Menu</h3>
+                <button id="close-mobile-menu" class="text-white text-2xl hover:text-secondary-orange transition-colors w-8 h-8 flex items-center justify-center">&times;</button>
+            </div>
+            <div class="w-full flex justify-center mb-2">
+                <span class="inline-block bg-primary-blue rounded-lg px-6 py-2 text-lg font-bold shadow-md border-2 border-white">Dr. Manish Ranjan</span>
+            </div>
         </div>
         
         <nav class="p-4">
@@ -306,7 +321,7 @@
     </div>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 opacity-0 invisible transition-all duration-300"></div>
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-[1090] opacity-0 invisible transition-all duration-300"></div>
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-primary-blue to-blue-800 py-16 md:py-24">
@@ -390,8 +405,8 @@
     </section>
 
     <!-- Services Section -->
-    <section class="py-16 bg-light-bg">
-        <div class="container mx-auto px-4">
+    <section id="services" class="py-12 sm:py-16 bg-light-bg">
+        <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-8 sm:mb-10 lg:mb-12">
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-text mb-3 sm:mb-4">How Can I Help You?</h2>
                 <p class="text-gray-text max-w-2xl mx-auto text-sm sm:text-base">Comprehensive orthopedic care and treatment solutions</p>
