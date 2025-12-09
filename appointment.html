@@ -167,7 +167,7 @@
                                     <h4 class="text-primary-blue font-bold text-base px-4 py-2 mb-2 border-b border-gray-200">Treatments & Services</h4>
                                     <a href="arthritis-treatment.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Arthritis Treatment</a>
                                     <a href="back-pain-treatment.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Back Pain Treatment</a>
-                                    <a href="neck-pain-treatment.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Neck Pain Treatment</a>
+                                    <a href="neck-pain-treatment.html"  class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Neck Pain Treatment</a>
                                     <a href="prp-treatment.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">PRP Treatment</a>
                                     <a href="plaster-casts.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Plaster Casts</a>
                                     <a href="blood-test.html" class="block px-4 py-2 hover:bg-light-bg hover:text-primary-blue hover:translate-x-1 transition-all duration-200 rounded">Blood Test</a>
@@ -307,14 +307,16 @@
                             - Phone format: 10 digits
                             - Email validation included
                         -->
-                        <form id="appointmentBookingForm" class="space-y-6" method="POST" action="/api/appointments/book" data-form-type="appointment">
+                        <!-- <form id="appointmentBookingForm" class="space-y-6" method="POST" action="/api/appointments/book" data-form-type="appointment"> -->
+
                             <!-- Hidden Fields for Backend -->
-                            <input type="hidden" name="doctor_id" value="1" data-doctor-name="Dr. Manish Ranjan">
-                            <input type="hidden" name="location" value="Jeevandan Health, Patna">
+                             
+                            <!-- <input type="hidden" name="doctor_id" value="1" data-doctor-name="Dr. Manish Ranjan">
+                            <input type="hidden" name="location" value="Dr Manish Ranjan\nSouth Of MacDowell Park, 3, Patliputra Path, Rajendra Nagar, Patna, Bihar 800016">
                             <input type="hidden" name="service_type" value="Orthopedic Treatment">
                             <input type="hidden" name="consultation_fee" value="500">
                             <input type="hidden" name="booking_status" value="pending">
-                            <input type="hidden" name="created_at" id="createdAt">
+                            <input type="hidden" name="created_at" id="createdAt"> -->
                             
                             <!-- Patient Full Name -->
                             <div class="grid md:grid-cols-2 gap-6">
@@ -509,7 +511,7 @@
                         <div class="space-y-4">
                         <div class="flex justify-between items-center py-3 border-b border-gray-200">
                             <span class="text-gray-600 text-sm">Location</span>
-                            <span class="font-semibold text-dark-text">Jeevandan Health</span>
+                            <span class="font-semibold text-dark-text">Dr Manish Ranjan<br>South Of MacDowell Park, 3, Patliputra Path, Rajendra Nagar, Patna, Bihar 800016</span>
                         </div>
                         
                         <div class="flex justify-between items-center py-3 border-b border-gray-200">
