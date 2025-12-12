@@ -2,7 +2,6 @@
 ==========================================
   ORTHOPEDIC DOCTOR WEBSITE - JAVASCRIPT
   Author: Professional Web Development
-  Version: 1.0
 ==========================================
 */
 
@@ -810,23 +809,24 @@ if (backToTopBtn) {
 // FLOATING BUTTONS
 // ==========================================
 
-const whatsappBtn = document.querySelector('.whatsapp-float');
-const callBtn = document.querySelector('.call-float');
+
+// Floating WhatsApp and Call buttons (match index.html)
+const whatsappBtn = document.querySelector('a[href^="https://wa.me/"]');
+const callBtn = document.querySelector('a[href^="tel:+91-7991153348"]');
 
 if (whatsappBtn) {
     whatsappBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const phone = '919876543210'; // Replace with actual WhatsApp number
-        const message = 'Hello Dr. Test, I would like to book an appointment.';
-        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
+        // Only override if you want custom behavior, otherwise let default work
+        // e.preventDefault();
+        // window.open(this.href, '_blank');
     });
 }
 
 if (callBtn) {
     callBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = 'tel:+919876543210'; // Replace with actual phone number
+        // Only override if you want custom behavior, otherwise let default work
+        // e.preventDefault();
+        // window.location.href = this.href;
     });
 }
 
@@ -839,22 +839,20 @@ const anchorLinks = document.querySelectorAll('a[href^="#"]');
 anchorLinks.forEach(link => {
     link.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
-        
         if (targetId === '#' || targetId === '#appointmentModal') return;
-        
         const targetElement = document.querySelector(targetId);
-        
         if (targetElement) {
             e.preventDefault();
-            
-            // Close mobile menu if open
+            // Defensive: only try to close menu if elements exist
+            const mainNav = document.querySelector('.main-nav');
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
             if (mainNav && mainNav.classList.contains('active')) {
                 mainNav.classList.remove('active');
-                mobileMenuToggle.classList.remove('active');
-                body.style.overflow = 'auto';
+                if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
             }
-            
-            const offset = header.classList.contains('sticky') ? 140 : 0;
+            const header = document.querySelector('.main-header');
+            const offset = header && header.classList.contains('sticky') ? 140 : 0;
             smoothScrollTo(targetElement, offset);
         }
     });
