@@ -424,3 +424,125 @@ section {
         opacity: 0.8;
     }
 }
+
+/* =================================
+   FOOTER ANIMATIONS
+   ================================= */
+
+/* Background parallax effect */
+@keyframes footerBgFloat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.footer-bg-animate {
+    animation: footerBgFloat 20s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+/* Slide from left animation */
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.footer-slide-left {
+    animation: slideLeft 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+/* Map zoom in animation */
+@keyframes mapZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.footer-map-zoom {
+    animation: mapZoom 0.8s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.6s;
+}
+
+/* Pulse animation for social icons */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+}
+
+footer a[href*="facebook"],
+footer a[href*="instagram"],
+footer a[href*="youtube"] {
+    animation: pulse 2s infinite;
+}
+
+/* Reduce animations on mobile for performance */
+@media (max-width: 768px) {
+    .footer-bg-animate {
+        animation: none;
+    }
+    
+    footer a[href*="facebook"],
+    footer a[href*="instagram"],
+    footer a[href*="youtube"] {
+        animation: none;
+    }
+}
+
+/* Smooth transitions for all footer links */
+footer a {
+    transition: all 0.3s ease;
+}
+
